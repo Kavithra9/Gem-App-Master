@@ -1,0 +1,53 @@
+
+
+<div class="message" *ngIf="sendsucces && isAleart">
+  YOUR ADS SENT SUCCESS FULLY <br>
+  PENDING FOR APPROVEL
+  <button class="btn-primary" (click)="closeAleart()">close</button>
+
+</div>
+<div class="main">
+  <div class="">
+    <div class="container back" style="width:40%; border: thistle solid 5px">
+      <div class="picMargin">
+        <div style="position: relative; left: 0; top: 0;">
+            <h3 class="align"><b>Post Ads</b></h3>
+
+          <img src="assets/img/download.jpg" width="200px" height="200px" class="img1 my-5" />
+          <label><img src="assets/img/cam2.png" width="50px" height="50px" class="img2" />
+            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+
+          </label>
+        </div>
+      </div>
+
+      <form (ngSubmit)="f.form.valid &&onsubmit()"#f="ngForm" novalidate >
+        
+        <div class="form-group">
+          <label ><h5> Condition</h5></label>
+          <div><h6><input type="radio"   value="used" name="condition" required #con="ngModel" [class.is-invalid]="con.invalid && con.touched" [(ngModel)]="postDetails.condition" class="mx-5">Used
+            <input type="radio"    value="New" name="condition"  required #con="ngModel" [class.is-invalid]="con.invalid && con.touched" [(ngModel)]="postDetails.condition" class="mx-5">New</h6></div>
+            <small class="text-danger" *ngIf="con.invalid && con.touched">Condition is required</small>
+        </div>
+        <div class="form-group">
+          <label ><h5> Title</h5></label>
+          <input type="text" class="form-control"  placeholder="Title" name="title" required #title="ngModel" [class.is-invalid]="title.invalid && title.touched" [(ngModel)]="postDetails.title">
+          <small class="text-danger" *ngIf="title.invalid && title.touched">Title is required</small>
+        </div>
+        <div class="form-group">
+          <label ><h5>Description</h5></label>
+          <input type="textarea" class="form-control"  placeholder="Add a description here" name="description" required #des="ngModel" [class.is-invalid]="des.invalid && des.touched" [(ngModel)]="postDetails.description">
+          <small class="text-danger" *ngIf="des.invalid && des.touched">Desvription is required</small>
+        </div>
+        <div class="form-group">
+          <label ><h5> Price</h5></label>
+          <input type="text" class="form-control"  placeholder="Rs.18000" name="price" required #pri="ngModel" [class.is-invalid]="pri.invalid && pri.touched" [(ngModel)]="postDetails.price">
+          <small class="text-danger" *ngIf="pri.invalid && pri.touched">Price is required</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary my-5" *ngIf="!f.form.invalid">Post The Ad</button>
+        <button type="submit" class="btn btn-primary my-5" *ngIf="f.form.invalid" disabled>Post The Ad</button>
+      </form>
+    </div>
+  </div>
+</div>

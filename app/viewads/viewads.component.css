@@ -1,0 +1,15 @@
+.adscontents{
+  margin:100px;
+  background-color: crimson;
+
+}
+
+.xyz{
+  background-image: url("../../assets/img/wall2.png");
+  background-size: cover;
+  background-repeat:no-repeat;
+
+}
+.container{
+  margin: 0px;
+}
